@@ -1,0 +1,13 @@
+produces:
+  - "application/json"
+  - "application/xml"
+parameters:
+  - in: path
+    name: driver_id
+    type: string
+    required: true
+responses:
+  200:
+    description: "Driver id whose statistic you want to see!"
+  "404":
+    description: "Requested data does not exist!"

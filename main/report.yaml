@@ -1,0 +1,14 @@
+produces:
+  - "application/json"
+  - "application/xml"
+parameters:
+  - name: order
+    in: "query"
+    description: "Order by"
+    required: false
+    type: "string"
+    enum: [ "asc", "desc" ]
+    default: "asc"
+responses:
+  "200":
+    description: "Successful operation!"
