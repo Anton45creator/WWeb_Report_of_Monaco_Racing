@@ -16,7 +16,7 @@ def report_data():
             'car': report.car,
             'start': report.start,
             'end': report.end,
-            'disqualifid': report.disqualifid,
+            'disqualified': report.disqualified,
             'result': report.result
         })
     return product_data

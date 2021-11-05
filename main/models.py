@@ -10,7 +10,7 @@ class Racer(Model):
     start = DateTimeField()
     end = DateTimeField()
     time = CharField()
-    disqualifid = CharField()
+    disqualified = CharField()
     result = CharField()
     key = CharField(unique=True)
 

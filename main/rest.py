@@ -10,7 +10,7 @@ report_reverse = sorted(report, key=lambda k: k['position'], reverse=True)
 class Report(Resource):
     def get(self):
         """
-        file: report.yaml
+        file: yaml/report.yaml
         """
         order = request.args.get('order')
         if order == 'asc' or not order:
@@ -22,7 +22,7 @@ class Report(Resource):
 class Driver(Resource):
     def get(self, driver_id):
         """
-        file: driver.yaml
+        file: yaml/driver.yaml
         """
         for driver in report:
             if driver['key'] == driver_id.upper():
