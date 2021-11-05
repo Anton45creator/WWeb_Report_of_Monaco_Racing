@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  {% block title -%}
+  <meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../static/main.css">
+  <title>Report of Monaco</title>
+  {% endblock %}
+ </head>
+ <body>
+ {% block content -%}
+ <h1 align="left" style="color:#32CD32; font-size:30px">Report of Monaco
+  2018 Racing</h1>
+
+
+ <p><a href="/report/drivers" target="_self">Report of Monaco</a></p>
+ <form action="/driver" method="post">
+  <div class="wrapper"><label>Driver code:</label>
+   <input type="text" name="key" value="" required />
+   <input type="submit" value="submit">
+  </div>
+ </form>
+ {% endblock %}
+ </body>

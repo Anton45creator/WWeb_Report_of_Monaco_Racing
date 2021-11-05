@@ -1,0 +1,23 @@
+{% extends "base.html"%}
+{% block content %}
+{{ super() }}
+    <table cellpadding="4" cellspacing="1">
+        <tr>
+            <td> Position </td>
+            <td> Driver </td>
+            <td> Car </td>
+            <td> Qualifications </td>
+            <td> Result </td>
+
+
+        </tr>
+          <tr>
+              <td>{{pilot.get("position") }}</td>
+              <td>{{pilot.get("driver") }}</td>
+              <td>{{pilot.get("car") }}</td>
+              <td>{{pilot.get("disqualified") }}</td>
+              <td>{{pilot.get("result") }}</td>
+          </tr>
+    </table>
+    <p><a href="/" target="_self">&#8592; Back to the section</a></p>
+{% endblock %}

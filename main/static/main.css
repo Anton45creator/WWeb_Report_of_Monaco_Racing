@@ -1,0 +1,36 @@
+body {
+    background: #DCDCDC; /* Цвет фона */
+    color: #32CD32; /* Цвет текста */
+}
+a {
+    color: #FF4500; /* Цвет обычной ссылки */
+    text-decoration: none; /* Убираем подчеркивание у ссылок */
+}
+a:hover {
+    color: #800000; /* Цвет ссылки при наведении на нее курсора мыши */
+    text-decoration: underline; /* Добавляем подчеркивание */
+}
+
+
+table {
+font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+font-size: 14px;
+border-collapse: collapse;
+text-align: center;
+}
+th, td:first-child {
+background: #20B2AA;
+color: white;
+padding: 10px 20px;
+}
+th, td {
+border-style: solid;
+border-width: 0 1px 1px 0;
+border-color: white;
+}
+td {
+background: #DCDCDC;
+}
+th:first-child, td:first-child {
+text-align: left;
+}

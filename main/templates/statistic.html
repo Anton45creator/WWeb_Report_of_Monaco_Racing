@@ -1,0 +1,23 @@
+{% extends "base.html"%}
+{% block content%}
+{{ super() }}
+<th>
+    <a class="nav-link" href="?order=asc">&#129047 ascending order</a>
+    <a class="nav-link" href="?order=desc">&#129045 descending order</a>
+</th>
+<table class="table">
+    <tr>
+        <td> Position </td>
+        <td> Key </td>
+        <td> Driver </td>
+    </tr>
+    {% for value in driver %}
+      <tr>
+          <td>{{ value.position }}.</td>
+          <td><p><a href="/driver?driver_id={{value.key}}">{{value.key}}</a></p></td>
+          <td>{{ value.driver }}</td>
+      </tr>
+    {% endfor %}
+</table>
+<p><a href="/" target="_self">&#8592; Back to the section</a></p>
+{% endblock %}
