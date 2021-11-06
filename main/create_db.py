@@ -12,3 +12,5 @@ report = monaco.build_report(data)
 with db:
     db.create_tables([Racer])
     Racer.insert_many(report).execute()
+
+print("DONE")
