@@ -5,10 +5,7 @@ from simplexml import dumps
 from flask import Flask, make_response, request, render_template
 from flask_restful import Api
 import rest
-from db_helper import *
-
-report = report_data()
-report_reverse = sorted(report, key=lambda k: k['position'], reverse=True)
+from models import *
 
 
 app = Flask(__name__)
@@ -44,26 +41,25 @@ def base():
 @app.route('/report/drivers', methods=['POST', 'GET'])
 def statistic():
     order = request.args.get('order')
+    db_report = Racer.select().dicts()
+    db_report_reverse = Racer.select().dicts().order_by(Racer.result.desc())
     if order == 'desc':
-        return render_template("statistic.html", driver=report_reverse)
+        return render_template("statistic.html", driver=db_report_reverse)
     else:
-        return render_template("statistic.html", driver=report)
+        return render_template("statistic.html", driver=db_report)
 
 
 @app.route('/driver', methods=['POST', 'GET'])
 def action():
     if request.method == 'POST':
         driver_id = request.form['key'].upper()
-        for driver in report:
-            if driver['key'] == driver_id:
-                return render_template("drivers.html", pilot=driver)
-
+        for driver in Racer.select().where(Racer.key == driver_id).dicts():
+            return render_template("drivers.html", pilot=driver)
     else:
         driver_id = request.args.get('driver_id')
         if driver_id:
-            for driver in report:
-                if driver['key'] == driver_id:
-                    return render_template("drivers.html", pilot=driver)
+            for driver in Racer.select().where(Racer.key == driver_id).dicts():
+                return render_template("drivers.html", pilot=driver)
 
 
 @app.errorhandler(500)

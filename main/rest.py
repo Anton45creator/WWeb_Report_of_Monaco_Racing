@@ -1,10 +1,6 @@
 from flask import request
 from flask_restful import Resource
-from db_helper import *
-
-
-report = report_data()
-report_reverse = sorted(report, key=lambda k: k['position'], reverse=True)
+from models import *
 
 
 class Report(Resource):
@@ -13,10 +9,15 @@ class Report(Resource):
         file: yaml/report.yaml
         """
         order = request.args.get('order')
+        report = []
         if order == 'asc' or not order:
+            for drivers in Racer.select().dicts():
+                report.append(drivers)
             return report
         else:
-            return report_reverse
+            for drivers in Racer.select().dicts().order_by(Racer.id.desc()):
+                report.append(drivers)
+            return report
 
 
 class Driver(Resource):
@@ -24,7 +25,7 @@ class Driver(Resource):
         """
         file: yaml/driver.yaml
         """
-        for driver in report:
-            if driver['key'] == driver_id.upper():
-                return driver
+        for driver in Racer.select().where(Racer.key == driver_id.upper())\
+                .dicts():
+            return driver
         return {"status": "Requested data does not exist!"}, 404

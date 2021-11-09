@@ -9,8 +9,12 @@ data = {'abb': cli.get_file_content('data', 'abbreviations.txt'),
 report = monaco.build_report(data)
 
 
-with db:
-    db.create_tables([Racer])
-    Racer.insert_many(report).execute()
+def create_tables():
+    # Creates a table in the database.
+    with db:
+        db.create_tables([Racer])
+        Racer.insert_many(report).execute()
 
-print("DONE")
+
+if __name__ == '__main__':
+    create_tables()
