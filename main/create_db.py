@@ -1,9 +1,9 @@
 from models import *
 from logic import monaco, cli
 
-data = {'abb': cli.get_file_content('data', 'abbreviations.txt'),
-        'start': cli.get_file_content('data', 'start.log', True, '_', 3),
-        'end': cli.get_file_content('data', 'end.log', True, '_', 3)}
+data = {'abb': cli.get_file_content('../data', 'abbreviations.txt'),
+        'start': cli.get_file_content('../data', 'start.log', True, '_', 3),
+        'end': cli.get_file_content('../data', 'end.log', True, '_', 3)}
 
 report = monaco.build_report(data)
 
