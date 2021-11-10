@@ -1,6 +1,5 @@
 from models import *
-import cli
-import monaco
+from logic import monaco, cli
 
 data = {'abb': cli.get_file_content('data', 'abbreviations.txt'),
         'start': cli.get_file_content('data', 'start.log', True, '_', 3),

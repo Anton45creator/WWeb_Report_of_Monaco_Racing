@@ -1,6 +1,6 @@
 import click
 import os
-import monaco
+from logic import monaco
 
 
 def get_file_content(folder_path, filename, insert_char=False, char='', pos=0):
