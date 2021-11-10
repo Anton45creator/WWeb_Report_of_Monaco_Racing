@@ -1,52 +1,50 @@
-from flask import request
-from app import app
-
+from main.tests.test_apy import *
 
 client = app.test_client()
 
 
-def test_report():
+def test_report(prepare_db):
     response = client.get("/api/v1/report")
-    assert response.status_code == 200
+    assert response.status_code, 200
 
 
-def test_driver_id_middle_is_upper():
+def test_driver_id_middle_is_upper(prepare_db):
     response = client.get("/api/v1/driver/Svf")
     assert response.status_code, 200
 
 
-def test_driver_id_lower():
+def test_driver_id_lower(prepare_db):
     response = client.get("/api/v1/driver?SVF")
     assert response.status_code, 200
 
 
-def test_drivers_id_upper():
+def test_drivers_id_upper(prepare_db):
     response = client.get("/api/v1/driver/svf")
     assert response.status_code, 200
 
 
-def test_driver_error():
+def test_driver_error(prepare_db):
     response = client.get("/api/v1/driver/mji")
-    assert response.status_code == 404
+    assert response.status_code, 404
 
 
-def test_report_asc():
+def test_report_asc(prepare_db):
     response = client.get("/api/v1/report?order=asc")
-    assert response.status_code == 200
+    assert response.status_code, 200
 
 
-def test_report_desc():
+def test_report_desc(prepare_db):
     response = client.get("/api/v1/report?order=desc")
-    assert response.status_code == 200
+    assert response.status_code, 200
 
 
-def test_driver_id_args():
+def test_driver_id_args(prepare_db):
     with app.test_request_context('/api/v1/driver?driver_id=VBM'):
         assert request.path == '/api/v1/driver'
         assert request.args['driver_id'] == 'VBM'
 
 
-def test_report_request_args():
+def test_report_request_args(prepare_db):
     with app.test_request_context('/api/v1/report?order=asc'):
         assert request.path == '/api/v1/report'
         assert request.args['order'] == 'asc'

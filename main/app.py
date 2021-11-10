@@ -2,9 +2,9 @@ import datetime
 import json
 from flasgger import Swagger
 from simplexml import dumps
-from flask import Flask, make_response, request, render_template
+from flask import Flask, make_response, render_template
 from flask_restful import Api
-import rest
+from resources import *
 from models import *
 
 
@@ -67,8 +67,8 @@ def internal_error(error):
     return render_template('500.html'), 500
 
 
-api.add_resource(rest.Report, '/report')
-api.add_resource(rest.Driver, '/driver/<driver_id>')
+api.add_resource(Report, '/report')
+api.add_resource(Driver, '/driver/<driver_id>')
 
 if __name__ == "__main__":
     app.run()
