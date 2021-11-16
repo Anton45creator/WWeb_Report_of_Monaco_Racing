@@ -1,4 +1,4 @@
-from models import *
+from main.models import *
 from logic import monaco, cli
 
 data = {'abb': cli.get_file_content('../data', 'abbreviations.txt'),

@@ -1,4 +1,4 @@
-from test.conftest import *
+from tests.conftest import *
 from flask import request
 
 
