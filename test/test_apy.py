@@ -1,21 +1,5 @@
-import pytest
-from main.app import *
-from main.models import *
-
-
-@pytest.fixture(scope="class")
-def prepare_db():
-    MODELS = [Racer]
-    test_db = SqliteDatabase(":memory:")
-    test_db.bind(MODELS)
-    test_db.connect()
-    test_db.create_tables(MODELS)
-    yield
-    test_db.drop_tables(MODELS)
-    test_db.close()
-
-
-client = app.test_client()
+from test.conftest import *
+from flask import request
 
 
 def test_base(prepare_db):
@@ -66,12 +50,6 @@ def test_middle_500(prepare_db):
 def test_lower_500(prepare_db):
     response = client.get("/driver?driver_id=sdv")
     assert response.status_code == 500
-
-
-def test_driver_id_args(prepare_db):
-    with app.test_request_context('/driver?driver_id=VBM'):
-        assert request.path == '/driver'
-        assert request.args['driver_id'] == 'VBM'
 
 
 def test_report_request_args(prepare_db):

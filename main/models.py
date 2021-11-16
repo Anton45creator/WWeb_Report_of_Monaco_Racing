@@ -16,6 +16,6 @@ class Racer(Model):
 
     class Meta:
         database = db
-        db_table = 'Racers'
+        table_name = 'Racers'
         order_by = ('position',)
 

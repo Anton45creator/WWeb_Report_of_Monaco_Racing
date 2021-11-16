@@ -1,6 +1,5 @@
-from main.tests.test_apy import *
-
-client = app.test_client()
+from test.conftest import *
+from flask import request
 
 
 def test_report(prepare_db):
@@ -36,12 +35,6 @@ def test_report_asc(prepare_db):
 def test_report_desc(prepare_db):
     response = client.get("/api/v1/report?order=desc")
     assert response.status_code, 200
-
-
-def test_driver_id_args(prepare_db):
-    with app.test_request_context('/api/v1/driver?driver_id=VBM'):
-        assert request.path == '/api/v1/driver'
-        assert request.args['driver_id'] == 'VBM'
 
 
 def test_report_request_args(prepare_db):

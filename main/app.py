@@ -2,10 +2,10 @@ import datetime
 import json
 from flasgger import Swagger
 from simplexml import dumps
-from flask import Flask, make_response, render_template
+from flask import Flask, make_response, render_template, request
 from flask_restful import Api
-from resources import *
-from models import *
+from main.resources import Report, Driver
+from main.models import *
 
 
 app = Flask(__name__)

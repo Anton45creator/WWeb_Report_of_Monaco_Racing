@@ -1,6 +1,6 @@
 from flask import request
 from flask_restful import Resource
-from models import *
+from main.models import *
 
 
 class Report(Resource):
